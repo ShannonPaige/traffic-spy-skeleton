@@ -3,7 +3,6 @@ require './test/test_helper'
 class ApplicationDetailTest < FeatureTest
 
   def test_user_can_see_thier_data_HAPPY
-    save_and_open_page
     create_user(1)
     create_payloads_three
     visit '/sources/test_company_1'
@@ -41,8 +40,10 @@ class ApplicationDetailTest < FeatureTest
 
     assert page.has_content?("OS Breakdown")
     within("#os_breakdown") do
-    save_and_open_page
     assert page.has_content?("Macintosh")
+    assert page.has_content?("Windows")
+    assert page.has_content?(2)
+
     end
     assert page.has_content?("Average Response Time listed longest to shortest Per URL")
     within("#responseTime li:first") do
