@@ -77,7 +77,7 @@ class FeatureTest < Minitest::Test
     end
 
     def create_payloads_five
-        Payload.create({url: "http://test_company_1.com/blog",
+        Payload.create({url: "http://test_company_1.com/blog/2",
                         requestedAt: "2013-02-16 21:38:28 -0700",
                         respondedIn: 37,
                         referredBy: "http://test_company_1.com",
