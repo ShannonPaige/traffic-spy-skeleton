@@ -6,7 +6,8 @@ module TrafficSpy
 
 
     get '/sources/error' do
-      @user = User.new(params)
+      @user    = User.find_by({identifier: params["user"]})
+      @payload = Payload.find_by({user_id: params["user"]})
       erb :error
     end
 
@@ -18,7 +19,7 @@ module TrafficSpy
       @user = User.find_by(identifier: identifier)
       @payload = Payload.find_by(user_id: identifier)
       if @user.nil?
-        redirect '/sources/error'
+        redirect "/sources/error?"
       else
         erb :user
       end
@@ -39,7 +40,7 @@ module TrafficSpy
       @user = User.find_by(identifier: identifier)
       @payload = Payload.find_by(user_id: identifier)
       if @payload.eventName.nil?
-        redirect '/sources/error'
+        redirect "/sources/error?user=#{identifier}"
       else
         erb :events
       end
