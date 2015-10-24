@@ -1,0 +1,7 @@
+<div id= "referrers">
+  <ul>
+    <% Payload.find_one(@user.identifier, :referredBy).each do |type_count| %>
+      <li><%= type_count[0] %></a> - <%= type_count[1] %></li>
+    <% end %>
+  </ul>
+</div>

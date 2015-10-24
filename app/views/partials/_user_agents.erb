@@ -1,0 +1,7 @@
+<div id= "user_agent">
+  <ul>
+    <% Payload.find_one(@user.identifier, :userAgent).each do |type_count| %>
+      <li><%= type_count[0] %></a> - <%= type_count[1] %></li>
+    <% end %>
+  </ul>
+</div>
