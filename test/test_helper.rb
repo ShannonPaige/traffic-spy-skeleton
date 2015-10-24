@@ -38,7 +38,7 @@ class FeatureTest < Minitest::Test
       Payload.create({url: "http://test_company_1.com/blog",
                       requestedAt: "2013-02-16 21:38:28 -0700",
                       respondedIn: 37,
-                      referredBy: "http://test_company_1.com",
+                      referredBy: "http://yung-jhun.com",
                       requestType: "GET",
                       eventName:  "beginRegistration",
                       userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1309.0 Safari/537.17",
@@ -51,7 +51,7 @@ class FeatureTest < Minitest::Test
       Payload.create({url: "http://test_company_1.com/page",
                       requestedAt: "2013-02-16 21:38:28 -0700",
                       respondedIn: 27,
-                      referredBy: "http://test_company_1.com",
+                      referredBy: "http://shan-non-non.com",
                       requestType: "GET",
                       eventName:  "socialLogin",
                       userAgent: "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1",
@@ -64,8 +64,8 @@ class FeatureTest < Minitest::Test
       Payload.create({url: "http://test_company_1.com/page",
                       requestedAt: "2013-02-16 21:38:28 -0700",
                       respondedIn: 45,
-                      referredBy: "http://test_company_1.com",
-                      requestType: "GET",
+                      referredBy: "http://asap-edgar.com",
+                      requestType: "POST",
                       eventName:  "socialLogin",
                       userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1309.0 Safari/537.17",
                       resolutionWidth: "1920",
@@ -77,7 +77,7 @@ class FeatureTest < Minitest::Test
     end
 
     def create_payloads_five
-        Payload.create({url: "http://test_company_1.com/blog",
+        Payload.create({url: "http://test_company_1.com/blog/2",
                         requestedAt: "2013-02-16 21:38:28 -0700",
                         respondedIn: 37,
                         referredBy: "http://test_company_1.com",

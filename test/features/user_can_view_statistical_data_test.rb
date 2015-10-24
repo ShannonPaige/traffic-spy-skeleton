@@ -2,37 +2,56 @@ require './test/test_helper'
 
 class UserGetsURLStatisticsTest <FeatureTest
   def test_registered_user_will_recieve_statistical_data
-    skip
     create_user(1)
-    # create_url(1)
+    create_payloads_three
 
-    visit ('/sources/IDENTIFIER/urls/RELATIVE/PATH')
+    visit ('/sources/test_company_1/urls/blog')
 
-    assert_equal '/sources/IDENTIFIER/urls/RELATIVE/PATH', current_path
+    assert_equal '/sources/test_company_1/urls/blog', current_path
 
     assert page.has_content?("Longest response time")
+    within("#long_response li:first") do
+      assert page.has_content?(45)
+    end
+
     assert page.has_content?("Shortest response time")
+    within("#short_response li:first") do
+      assert page.has_content?(27)
+    end
+
     assert page.has_content?("Average response time")
+    within("#avg_response li:first") do
+      assert page.has_content?(36)
+    end
+
     assert page.has_content?("HTTP verbs")
-    assert page.has_content?("Referrrers")
-    assert page.has_content?("User agents")
+    within("#verbs li:first") do
+      assert page.has_content?(2)
+      assert page.has_content?("GET")
+    end
+    within("#verbs li:last") do
+      assert page.has_content?(1)
+      assert page.has_content?("POST")
+    end
+
+    assert page.has_content?("referrers")
+    within("#referrers li:first") do
+      assert page.has_content?(1)
+      assert page.has_content?("http://yung-jhun.com")
+    end
+    within("#referrers li:last") do
+      assert page.has_content?(1)
+      assert page.has_content?("http://asap-edgar.com")
+    end
+
+    assert page.has_content?("user agents")
+    within("#user_agent li:first") do
+      assert page.has_content?(2)
+      assert page.has_content?("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1309.0 Safari/537.17")
+    end
+    within("#user_agent li:last") do
+      assert page.has_content?(1)
+      assert page.has_content?("Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1")
+    end
   end
-
-  def test_if_identifier_relative_or_path_is_missing_it_redirects_to_error_page
-    skip
-    create_user(1)
-
-    visit ('/sources/IDENTIFIER/urls/RELATIVE/PATH')
-
-    assert_equal '/sources/IDENTIFIER/urls/RELATIVE/PATH', current_path
-
-    refute page.has_content?("Longest response time")
-    refute page.has_content?("Shortest response time")
-    refute page.has_content?("Average response time")
-    refute page.has_content?("HTTP verbs")
-    refute page.has_content?("Referrrers")
-    refute page.has_content?("User agents")
-  end
-
-
 end

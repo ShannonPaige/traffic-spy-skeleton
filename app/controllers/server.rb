@@ -16,8 +16,8 @@ module TrafficSpy
     end
 
     get '/sources/:identifier' do |identifier|
-      @user = User.find_by({identifier: identifier})
-      @payload = Payload.find_by({user_id: identifier})
+      @user = User.find_by(identifier: identifier)
+      @payload = Payload.find_by(user_id: identifier)
       if @user.nil?
         redirect "/sources/error?"
         erb :user
@@ -25,11 +25,13 @@ module TrafficSpy
     end
 
     get '/sources/:identifier/data' do |identifier|
-      @user = User.find_by({identifier: identifier})
+      @user = User.find_by(identifier: identifier)
       erb :data
     end
 
-    get '/sources/:identifier/urls/:path' do
+    get '/sources/:identifier/urls/:path' do |identifier, path|
+      @user = User.find_by(identifier: identifier)
+      @payload = Payload.find_by(user_id: identifier)
       erb :urls_rp
     end
 
