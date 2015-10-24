@@ -35,12 +35,12 @@ class Payload < ActiveRecord::Base
 
   def self.url_link(user_id, url_count)
     path = Payload.url_path(user_id, url_count[0])
-    full_url = "http://localhost:9393/sources/" + user_id + "/urls" + path
+    full_url = "/sources/" + user_id + "/urls" + path
   end
 
   def self.event_link(user_id, url_count)
     path = Payload.url_path(user_id, url_count[0])
-    full_url = "http://localhost:9393/sources/" + user_id + "/events/" + path
+    full_url = "/sources/" + user_id + "/events/" + path
   end
 
   def self.active_record_browser(user_id, user_agent)
