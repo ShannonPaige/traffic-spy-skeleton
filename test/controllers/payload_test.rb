@@ -25,7 +25,6 @@ class PayloadTest < Minitest::Test
   end
 
   def test_that_request_denied_if_request_is_not_unique
-    skip
     post '/sources', {"identifier" => "jumpstartlab", "rootUrl" => "HTTP://Example.com"}
     post '/sources/jumpstartlab/data', {"payload"=> "{\"url\":\"http://jumpstartlab.com/blog\",
                                                       \"requestedAt\":\"2013-02-16 21:38:28 -0700\",

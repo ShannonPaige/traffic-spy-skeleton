@@ -6,7 +6,7 @@ class Payload < ActiveRecord::Base
     hash.sort_by { |key, count| key}.sort_by { |key, count| count }.reverse
   end
 
-  def self.count(items)
+  def self.count_items(items)
     counted = items.group_by do |item|
       item
     end
@@ -18,13 +18,13 @@ class Payload < ActiveRecord::Base
 
   def self.find_one(user_id, column_one)
     items= Payload.where(:user_id => user_id).pluck(column_one)
-    counted = count(items)
+    counted = count_items(items)
     sort(counted)
   end
 
   def self.find_two(user_id, column_one, column_two)
     items= Payload.where(:user_id => user_id).pluck(column_one, column_two)
-    counted = count(items)
+    counted = count_items(items)
     sort(counted)
   end
 
@@ -50,18 +50,18 @@ class Payload < ActiveRecord::Base
       hash = UserAgent.parse(string)
       browser << hash.browser
     end
-    counted = count(browser)
+    counted = count_items(browser)
     sort(counted)
   end
 
   def self.active_record_os(user_id, user_agent)
     agent_data= Payload.where(:user_id => user_id).pluck(user_agent)
-    browser = []
+    platform = []
     agent_data.each do |string|
       hash = UserAgent.parse(string)
-      browser << hash.platform
+      platform << hash.platform
     end
-    counted = count(browser)
+    counted = count_items(platform)
     sort(counted)
   end
 end
