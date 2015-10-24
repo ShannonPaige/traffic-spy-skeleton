@@ -38,6 +38,15 @@ class Payload < ActiveRecord::Base
     full_url = "/sources/" + user_id + "/urls" + path
   end
 
+  def self.make_link(user_id, path)
+    full_url = "http://" + user_id + ".com/" + path
+  end
+
+  # def self.strip_link(user_id, full_path_url)
+  #   root = "http://" + user_id + ".com/"
+  #   path = full_path_url.gsub(root, "")
+  # end
+
   def self.event_link(user_id, url_count)
     path = Payload.url_path(user_id, url_count[0])
     full_url = "/sources/" + user_id + "/events/" + path

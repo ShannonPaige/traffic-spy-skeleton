@@ -19,7 +19,7 @@ module TrafficSpy
       @user = User.find_by(identifier: identifier)
       @payload = Payload.find_by(user_id: identifier)
       if @user.nil?
-        redirect "/sources/error?"
+        redirect "/sources/error"
       else
         erb :user
       end
@@ -33,7 +33,14 @@ module TrafficSpy
     get '/sources/:identifier/urls/:path' do |identifier, path|
       @user = User.find_by(identifier: identifier)
       @payload = Payload.find_by(user_id: identifier)
-      erb :urls_rp
+      passed_path = Payload.make_link(@user.identifier, path)
+      # given_path  = Payload.strip_link(@user.identifier, @payload.url)
+      binding.pry
+      if Payload.where(url: passed_path) != []
+        erb :urls_rp
+      else
+        redirect '/sources/error'
+      end
     end
 
     get '/sources/:identifier/events' do |identifier|
