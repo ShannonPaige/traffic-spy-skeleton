@@ -20,6 +20,7 @@ module TrafficSpy
       @payload = Payload.find_by(user_id: identifier)
       if @user.nil?
         redirect "/sources/error?"
+      else
         erb :user
       end
     end

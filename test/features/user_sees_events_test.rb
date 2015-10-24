@@ -50,7 +50,7 @@ class ApplicationEventIndexTest < FeatureTest
     visit '/sources/test_company_1/events'
 
     assert_equal '/sources/error', current_path
-    assert page.has_content?("error")
+    assert page.has_content?("Error: No given Event Name in payload")
   end
 
 end
