@@ -35,7 +35,6 @@ module TrafficSpy
       @payload = Payload.find_by(user_id: identifier)
       passed_path = Payload.make_link(@user.identifier, path)
       # given_path  = Payload.strip_link(@user.identifier, @payload.url)
-      binding.pry
       if Payload.where(url: passed_path) != []
         erb :urls_rp
       else
