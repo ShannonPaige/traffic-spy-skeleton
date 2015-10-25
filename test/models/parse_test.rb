@@ -3,6 +3,7 @@ require_relative '../test_helper'
 class ParsePayloadTest < FeatureTest #Minitest::Test
 
   def test_parse_method_returns_info_from_json_string
+    skip
     params = {"payload"=>
                "{\"url\":\"http://jumpstartlab.com/blog\",\n
                  \"requestedAt\":\"2013-02-16 21:38:28 -0700\",\n

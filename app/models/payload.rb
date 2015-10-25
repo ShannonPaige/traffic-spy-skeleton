@@ -2,6 +2,45 @@ class Payload < ActiveRecord::Base
   belongs_to :user
   validates_presence_of :user_id
 
+  def self.data_status(identifier, params)
+    response = {}
+    if params["payload"].nil?
+      response[:status]  = 400
+      response[:body]    = "400 Bad Request - Payload Missing"
+    else
+      data = ParsePayload.parse(params)
+      payload = Payload.new(data)
+      if Payload.all.include?(Payload.find_by("sha" => Digest::SHA2.hexdigest(params.to_s)))
+        response[:status]  = 403
+        response[:body]    = "403 Forbidden - Duplicate Payload"
+      elsif User.find_by(identifier: identifier).nil?
+        response[:status]  = 403
+        response[:body]    = "403 Forbidden - User Does Not Exist"
+      else
+        payload.save
+        response[:status]  = 200
+        response[:body]    = "Success"
+      end
+    end
+    response
+  end
+
+  def self.sources_status(params)
+    user = User.new(params)
+    response = {}
+    if User.all.include?(User.find_by(params))
+      response[:status]  = 403
+      response[:body]    = "User already exists 403 - Bad Request"
+    elsif user.save
+      response[:status]  = 200
+      response[:body]    =  "Success - 200 OK"
+    else
+      response[:status]  = 400
+      response[:body]    =  user.errors.full_messages.join(", ")
+    end
+    response
+  end
+
   def self.sort(hash)
     hash.sort_by { |key, count| key}.sort_by { |key, count| count }.reverse
   end
