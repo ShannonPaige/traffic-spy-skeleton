@@ -10,11 +10,15 @@ class ApplicationDetailTest < FeatureTest
     assert_equal '/sources/test_company_1', current_path
 
     assert page.has_content?("Most Requested URLS")
+    assert page.has_content?("Average Response Time")
+
     within("#urls") do
       assert page.has_content?(2)
       assert page.has_content?("http://test_company_1.com/page")
       assert page.has_content?(1)
       assert page.has_content?("http://test_company_1.com/blog")
+      assert page.has_content?(36)
+      assert page.has_content?(37)
     end
 
     assert page.has_content?("Screen Resolution")
@@ -38,17 +42,6 @@ class ApplicationDetailTest < FeatureTest
       assert page.has_content?("Macintosh")
       assert page.has_content?("Windows")
       assert page.has_content?(2)
-    end
-
-    assert page.has_content?("Average Response Time")
-    within("#responseTime") do
-      assert page.has_content?(1)
-      assert page.has_content?(45)
-    end
-
-    within("#responseTime") do
-      assert page.has_content?(1)
-      assert page.has_content?(27)
     end
   end
 

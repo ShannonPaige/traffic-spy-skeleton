@@ -4,14 +4,17 @@
             <thead>
                 <tr>
                     <th>URL</th>
-                    <th>#</th>
+                    <th>Average Response Time<th>
+                    <th>Views</th>
                 </tr>
             </thead>
             <tbody>
                 <% Payload.find_one(@user.identifier, :url).each do |url_count| %>
                 <tr>
                     <td><a href = "<%= Payload.url_link(@user.identifier, url_count) %>"><%= url_count[0] %></a></td>
+                    <td><%= Payload.where(url: url_count[0]).average("respondedIn") %></td>
                     <td><%= url_count[1] %></td>
+
                 </tr>
                 <% end %>
             </tbody>
