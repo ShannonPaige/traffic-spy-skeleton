@@ -5,7 +5,7 @@
     <li> Error: No user given.</li>
     <% elsif @payload.eventName.nil?%>
     <li> Error: No given Event Name in payload.</li>
-    <% else @payload.select(:eventName).empty?%>
+    <% else @events.empty?%>
     <li> Your event name was not found </li>
     <a href = "/sources/<%= @user.identifier %>/events"/> index of events </a>
     <% end %>

@@ -36,6 +36,7 @@ class Payload < ActiveRecord::Base
   def self.url_link(user_id, url_count)
     path = Payload.url_path(user_id, url_count[0])
     full_url = "/sources/" + user_id + "/urls" + path
+    binding.pry
   end
 
   def self.make_link(user_id, path)
