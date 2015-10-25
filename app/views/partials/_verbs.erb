@@ -1,7 +1,22 @@
-<div id= "verbs">
-  <ul>
-    <% Payload.find_one(@user.identifier, :requestType).each do |type_count| %>
-      <li><%= type_count[0] %></a> - <%= type_count[1] %></li>
-    <% end %>
-  </ul>
+<div class="panel-body" id="verbs">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Verbs Used</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% Payload.find_one(@user.identifier, :requestType).each do |type_count| %>
+                <tr>
+                    <td><%= type_count[0] %></td>
+                    <td><%= type_count[1] %></td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+    <!-- /.table-responsive -->
 </div>
+<!-- /.panel-body -->

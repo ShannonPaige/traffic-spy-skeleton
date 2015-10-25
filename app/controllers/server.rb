@@ -30,6 +30,11 @@ module TrafficSpy
       erb :data
     end
 
+    get '/sources/:identifier/urls' do |identifier|
+      @user = User.find_by(identifier: identifier)
+        erb :urls
+    end
+
     get '/sources/:identifier/urls/:path' do |identifier, path|
       @user = User.find_by(identifier: identifier)
       @payload = Payload.find_by(user_id: identifier)
