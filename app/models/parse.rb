@@ -1,6 +1,7 @@
 require 'json'
 
-class ParsePayload
+
+class ParsePayload 
 
   def self.parse(params)
     JSON.parse(params['payload'])
