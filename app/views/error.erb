@@ -9,13 +9,21 @@
 
 <div id= "error">
   <ul>
+
   <% if @user.nil? %>
     <li> Error: No user given.</li>
+
     <% elsif @payload.eventName.nil?%>
     <li> Error: No given Event Name in payload.</li>
-    <% else @payload.select(:eventName).empty?%>
+
+    <% elsif !@url.nil? %>
+    <li> Undefined URL </li>
+
+    <% elsif @events.empty?%>
     <li> Your event name was not found </li>
     <a href = "/sources/<%= @user.identifier %>/events"/> index of events </a>
-  <% end %>
+
+    <% end %>
+
   </ul>
 </div>

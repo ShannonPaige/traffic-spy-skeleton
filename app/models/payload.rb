@@ -1,4 +1,4 @@
-class Payload < ActiveRecord::Base
+  class Payload < ActiveRecord::Base
   belongs_to :user
   validates_presence_of :user_id
 
@@ -70,6 +70,7 @@ class Payload < ActiveRecord::Base
   def self.url_path(user_id, url)
     root = "http://" + user_id + ".com"
     path = url.gsub(root, "")
+
   end
 
   def self.url_link(user_id, url_count)
@@ -78,15 +79,17 @@ class Payload < ActiveRecord::Base
   end
 
   def self.make_link(user_id, path)
+    # binding.pry
     full_url = "http://" + user_id + ".com/" + path
   end
-
+  #
   # def self.strip_link(user_id, full_path_url)
   #   root = "http://" + user_id + ".com/"
   #   path = full_path_url.gsub(root, "")
   # end
 
   def self.event_link(user_id, url_count)
+    # binding.pry
     path = Payload.url_path(user_id, url_count[0])
     full_url = "/sources/" + user_id + "/events/" + path
   end
