@@ -9,6 +9,7 @@ module TrafficSpy
       @user    = User.find_by({identifier: params["user"]})
       @payload = Payload.find_by({user_id: params["user"]})
       @events  = Payload.where(eventName: params["payload"])
+      @url     = params['path']
       erb :error
     end
 
@@ -39,7 +40,7 @@ module TrafficSpy
       if Payload.where(url: passed_path) != []
         erb :urls_rp
       else
-        redirect '/sources/error'
+        redirect "/sources/error?user=#{identifier}&path=#{path}"
       end
     end
 
