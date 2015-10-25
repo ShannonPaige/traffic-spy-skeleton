@@ -10,54 +10,39 @@ class ApplicationDetailTest < FeatureTest
     assert_equal '/sources/test_company_1', current_path
 
     assert page.has_content?("Most Requested URLS")
-    within("#urls li:first") do
+    assert page.has_content?("Average Response Time")
+
+    within("#urls") do
       assert page.has_content?(2)
       assert page.has_content?("http://test_company_1.com/page")
-    end
-    within("#urls li:last") do
       assert page.has_content?(1)
       assert page.has_content?("http://test_company_1.com/blog")
+      assert page.has_content?(36)
+      assert page.has_content?(37)
     end
 
     assert page.has_content?("Screen Resolution")
-    within("#screen_resolution li:first") do
+    within("#screen_resolution") do
       assert page.has_content?(2)
       assert page.has_content?("1920 x 1280")
-    end
-    within("#screen_resolution li:last") do
       assert page.has_content?(1)
       assert page.has_content?("2048 x 1536")
     end
 
     assert page.has_content?("Web Browser Breakdown")
-    within("#browser_breakdown li:first") do
+    within("#browser_breakdown") do
       assert page.has_content?(2)
       assert page.has_content?("Chrome")
-    end
-    within("#browser_breakdown li:last") do
       assert page.has_content?(1)
       assert page.has_content?("Firefox")
     end
 
     assert page.has_content?("OS Breakdown")
     within("#os_breakdown") do
-    assert page.has_content?("Macintosh")
-    assert page.has_content?("Windows")
-    assert page.has_content?(2)
-
+      assert page.has_content?("Macintosh")
+      assert page.has_content?("Windows")
+      assert page.has_content?(2)
     end
-    assert page.has_content?("Average Response Time listed longest to shortest Per URL")
-    within("#responseTime li:first") do
-      assert page.has_content?(1)
-      assert page.has_content?(45)
-    end
-    within("#responseTime li:last") do
-      assert page.has_content?(1)
-      assert page.has_content?(27)
-    end
-
-    #Hyperlinks of each url to view url specific data
-    #Hyperlink to view aggregate event data
   end
 
   def test_user_can_click_on_urls_to_see_detailed_data
@@ -77,7 +62,6 @@ class ApplicationDetailTest < FeatureTest
     visit '/sources/test_company_1'
 
     assert_equal '/sources/error', current_path
-
-    assert page.has_content?("You Have an Error!")
+    assert page.has_content?("Error: No user given.")
   end
 end

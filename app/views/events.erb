@@ -1,9 +1,31 @@
-<h1>Most Received Events</h1>
-<div id= "events">
-  <h3>Click each link to learn more about that event</h3>
-  <ul>
-    <% Payload.find_one(@user.identifier, :eventName).each do |url_count| %>
-      <li><a href = "<%= Payload.event_link(@user.identifier, url_count) %>"><%= url_count[0] %></a> - <%= url_count[1] %></li>
-    <% end %>
-  </ul>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header"><%= @user.identifier %> Data: Events</h1>
+        <h3>Click each link to learn more about that event</h3>
+    </div>
+    <!-- /.col-lg-12 -->
 </div>
+<!-- /.row -->
+
+<div class="panel-body" id="events">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Event</th>
+                    <th># of times received</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% Payload.find_one(@user.identifier, :eventName).each do |url_count| %>
+                <tr>
+                    <td><a href = "<%= Payload.event_link(@user.identifier, url_count) %>"><%= url_count[0] %></a></td>
+                    <td><%= url_count[1] %></td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+    <!-- /.table-responsive -->
+</div>
+<!-- /.panel-body -->

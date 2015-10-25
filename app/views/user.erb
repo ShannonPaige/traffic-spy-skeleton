@@ -1,13 +1,43 @@
-<h1>Your Data!!!!!!</h1>
-<h2>Most Requested URLS</h2>
-<%= erb :'partials/_url_stats' %>
-Web Browser Breakdown (userAgent)<br>
-<%= erb :'partials/_browser_breakdown' %>
-OS Breakdown (userAgent)<br>
-<%= erb :'partials/_os_breakdown' %>
-Screen Resolution acroos all requests (W x H)<br>
-<%= erb :'partials/_screen_res' %>
-Average Response Time listed longest to shortest Per URL<br>
-<%= erb :'partials/_response_time' %>
-
-<a href='/sources/<%= @user.identifier %>/events'>  Hyperlink to view aggregate event data  </a>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header"><%= @user.identifier %> Data</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Most Requested URLS (Click link to learn more)
+        </div>
+        <%= erb :'partials/_url_stats' %>
+    </div>
+    <!-- /.panel -->
+</div>
+<div class="col-lg-4">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Web Browser Breakdown
+        </div>
+        <%= erb :'partials/_browser_breakdown' %>
+    </div>
+    <!-- /.panel -->
+</div>
+<div class="col-lg-4">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            OS Breakdown
+        </div>
+        <%= erb :'partials/_os_breakdown' %>
+    </div>
+    <!-- /.panel -->
+</div>
+<div class="col-lg-4">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Screen Resolution (W x H)
+        </div>
+        <%= erb :'partials/_screen_res' %>
+    </div>
+    <!-- /.panel -->
+</div>

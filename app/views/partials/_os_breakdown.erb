@@ -1,7 +1,22 @@
-<div id= "os_breakdown">
-  <ul>
-    <% Payload.active_record_os(@user.identifier, :userAgent).each do |url_count| %>
-      <li><%= url_count[0] %> - <%= url_count[1] %></li>
-    <% end %>
-  </ul>
+<div class="panel-body" id="os_breakdown">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>OS</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% Payload.active_record_os(@user.identifier, :userAgent).each do |url_count| %>
+                <tr>
+                    <td><%= url_count[0] %></td>
+                    <td><%= url_count[1] %></td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+    <!-- /.table-responsive -->
 </div>
+<!-- /.panel-body -->

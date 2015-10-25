@@ -1,5 +1,6 @@
 require_relative '../test_helper'
-class PayloadTest < FeatureTest
+class PayloadModelTest < FeatureTest
+
 
   def test_that_payloads_can_sort
     hash = {"http://jumpstartlab.com/page"=>1, "http://test_company_1.com/blog"=>3, "http://test_company_1.com/page"=>2}

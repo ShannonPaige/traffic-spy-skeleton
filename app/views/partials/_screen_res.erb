@@ -1,7 +1,22 @@
-<div id= "screen_resolution">
-  <ul>
-    <% Payload.find_two(@user.identifier, :resolutionWidth, :resolutionHeight).each do |width_height| %>
-    <li><%= width_height[0][0] %> x <%= width_height[0][1] %> - <%= width_height[1] %></li>
-    <% end %>
-  </ul>
+<div class="panel-body" id="screen_resolution">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>URL</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% Payload.find_two(@user.identifier, :resolutionWidth, :resolutionHeight).each do |width_height| %>
+                <tr>
+                    <td><%= width_height[0][0] %> x <%= width_height[0][1] %></td>
+                    <td><%= width_height[1] %></td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+    <!-- /.table-responsive -->
 </div>
+<!-- /.panel-body -->
