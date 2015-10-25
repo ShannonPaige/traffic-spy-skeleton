@@ -1,8 +1,22 @@
-<div id= "urls">
-  <h3>Click each link to learn more about that page</h3>
-  <ul>
-    <% Payload.find_one(@user.identifier, :url).each do |url_count| %>
-      <li><a href = "<%= Payload.url_link(@user.identifier, url_count) %>"><%= url_count[0] %></a> - <%= url_count[1] %></li> 
-    <% end %>
-  </ul>
+<div class="panel-body" id="urls">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>URL</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% Payload.find_one(@user.identifier, :url).each do |url_count| %>
+                <tr>
+                    <td><a href = "<%= Payload.url_link(@user.identifier, url_count) %>"><%= url_count[0] %></a></td>
+                    <td><%= url_count[1] %></td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+    <!-- /.table-responsive -->
 </div>
+<!-- /.panel-body -->

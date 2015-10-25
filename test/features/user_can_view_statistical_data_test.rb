@@ -25,11 +25,9 @@ class UserGetsURLStatisticsTest <FeatureTest
     end
 
     assert page.has_content?("HTTP verbs")
-    within("#verbs li:first") do
+    within("#verbs") do
       assert page.has_content?(2)
       assert page.has_content?("GET")
-    end
-    within("#verbs li:last") do
       assert page.has_content?(1)
       assert page.has_content?("POST")
     end
@@ -45,11 +43,9 @@ class UserGetsURLStatisticsTest <FeatureTest
     end
 
     assert page.has_content?("user agents")
-    within("#user_agent li:first") do
+    within("#user_agent") do
       assert page.has_content?(2)
       assert page.has_content?("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1309.0 Safari/537.17")
-    end
-    within("#user_agent li:last") do
       assert page.has_content?(1)
       assert page.has_content?("Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1")
     end

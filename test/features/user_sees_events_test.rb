@@ -8,13 +8,10 @@ class ApplicationEventIndexTest < FeatureTest
 
     visit "/sources/test_company_1/events"
 
-
-    assert page.has_content?("Most Received Events")
-    within("#events li:first") do
+    assert page.has_content?("Events")
+    within("#events") do
       assert page.has_content?(2)
       assert page.has_content?("socialLogin")
-    end
-    within("#events li:last") do
       assert page.has_content?(1)
       assert page.has_content?("beginRegistration")
     end
