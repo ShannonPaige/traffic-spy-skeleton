@@ -52,7 +52,9 @@ module TrafficSpy
       end
     end
 
-    get '/sources/:identifier/events/:eventname' do
+    get '/sources/:identifier/events/:eventname' do |identifier, eventname|
+      @user = User.find_by(identifier: identifier)
+      @events = Payload.where(eventName: eventname)
       if Payload.select(:eventName).empty?
         redirect '/sources/error'
       else

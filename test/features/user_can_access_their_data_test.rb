@@ -6,7 +6,9 @@ class ApplicationDetailTest < FeatureTest
     create_user(1)
     create_payloads_three
     visit '/sources/test_company_1'
+
     assert_equal '/sources/test_company_1', current_path
+
     assert page.has_content?("Most Requested URLS")
     within("#urls li:first") do
       assert page.has_content?(2)
