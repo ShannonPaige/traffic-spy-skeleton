@@ -1,1 +1,12 @@
-<h2>Event Name Goes Here</h2>
+<h2>Hourly Breakdown</h2>
+<div id= "event_details">
+  <ul>
+    <% times = @events.hourly_breakdown(@user.identifier) %>
+    <% times.each do |time, amount| %>
+      <li><%= time %> - <%= amount %></li>
+    <% end %>
+  </ul>
+</div>
+<div id="event_total">
+  <h3>There were a total of <%= times.values.reduce(0) { |sum, n| sum + n } %> events</h3>
+</div>

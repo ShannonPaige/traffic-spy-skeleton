@@ -78,7 +78,7 @@ class FeatureTest < Minitest::Test
 
     def create_payloads_five
         Payload.create({url: "http://test_company_1.com/blog/2",
-                        requestedAt: "2013-02-16 21:38:28 -0700",
+                        requestedAt: "2013-02-16 21:38:28 UTC",
                         respondedIn: 37,
                         referredBy: "http://test_company_1.com",
                         requestType: "GET",
@@ -91,7 +91,7 @@ class FeatureTest < Minitest::Test
                         ip: "63.29.38.211"})
 
         Payload.create({url: "http://test_company_1.com/page",
-                        requestedAt: "2013-02-16 21:38:28 -0700",
+                        requestedAt: "2013-02-16 00:38:28 UTC",
                         respondedIn: 27,
                         referredBy: "http://test_company_1.com",
                         requestType: "GET",
@@ -104,7 +104,7 @@ class FeatureTest < Minitest::Test
                         ip: "63.29.38.211"})
 
         Payload.create({url: "http://test_company_1.com/page",
-                        requestedAt: "2013-02-16 21:38:28 -0700",
+                        requestedAt: "2013-02-16 21:38:28 UTC",
                         respondedIn: 45,
                         referredBy: "http://test_company_1.com",
                         requestType: "GET",
@@ -117,7 +117,7 @@ class FeatureTest < Minitest::Test
                         ip: "63.29.38.211"})
 
       Payload.create({url: "http://test_company_1.com/page",
-                      requestedAt: "2013-02-16 21:38:28 -0700",
+                      requestedAt: "2013-02-16 01:38:28 UTC",
                       respondedIn: 27,
                       referredBy: "http://test_company_1.com",
                       requestType: "GET",
@@ -130,7 +130,7 @@ class FeatureTest < Minitest::Test
                       ip: "63.29.38.211"})
 
       Payload.create({url: "http://test_company_1.com/page",
-                      requestedAt: "2013-02-16 21:38:28 -0700",
+                      requestedAt: "2013-02-16 23:38:28 UTC",
                       respondedIn: 45,
                       referredBy: "http://test_company_1.com",
                       requestType: "GET",
