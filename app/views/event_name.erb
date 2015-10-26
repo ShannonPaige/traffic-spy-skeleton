@@ -1,22 +1,45 @@
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header"><%= @user.identifier %> Data: Event Details</h1>
+        <h1 class="page-header"><%= @user.identifier.capitalize %> Data: Event Details</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
 <!-- /.row -->
-
-
-
-<h2>Hourly Breakdown</h2>
-<div id= "event_details">
-  <ul>
-    <% times = @events.hourly_breakdown(@user.identifier) %>
-    <% times.each do |time, amount| %>
-      <li><%= time %> - <%= amount %></li>
-    <% end %>
-  </ul>
-</div>
 <div id="event_total">
+  <% times = @events.hourly_breakdown(@user.identifier) %>
   <h3>There were a total of <%= times.values.reduce(0) { |sum, n| sum + n } %> events</h3>
 </div>
+<div class="row">
+      <div class="col-lg-6">
+          <div class="panel panel-default">
+              <div class="panel-heading" id= "event_details">
+                  <h2>Hourly Breakdown</h2>
+              </div>
+              <!-- /.panel-heading -->
+              <div class="panel-body">
+                  <div class="table-responsive">
+                      <table class="table table-striped table-bordered table-hover">
+                          <thead>
+                              <tr>
+                                  <th>Hour</th>
+                                  <th>Number Of Events</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <% times = @events.hourly_breakdown(@user.identifier) %>
+                              <% times.each do |time, amount| %>
+                              <tr>
+                                  <td><%= time %></td>
+                                  <td><%= amount %></td>
+                              </tr>
+                              <% end %>
+                          </tbody>
+                      </table>
+                  </div>
+                  <!-- /.table-responsive -->
+              </div>
+              <!-- /.panel-body -->
+          </div>
+          <!-- /.panel -->
+      </div>
+      <!-- /.col-lg-6 -->

@@ -14,7 +14,6 @@ class UserGetsURLStatisticsTest <FeatureTest
     end
 
     assert page.has_content?("Shortest Response Time")
-    save_and_open_page
     within("#long_response") do
       assert page.has_content?(27)
     end
