@@ -17,6 +17,7 @@ class ErrorTest < FeatureTest
                      user_id: "test_company_1",
                      ip: "63.29.38.211"})
     visit '/sources/test_company_1'
+
     assert_equal'/sources/error', current_path
     within("#error li:first") do
     assert page.has_content?("No user given.")
