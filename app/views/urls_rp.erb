@@ -1,22 +1,43 @@
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header"><%= @user.identifier %> Data: URL Data</h1>
+        <h1 class="page-header"><%= @user.identifier.capitalize %> Data: URL Data</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
 <!-- /.row -->
-
-
-
-<h2>Longest response time</h2>
-<%= erb :'partials/_long_response_time' %>
-Shortest response time<br>
-<%= erb :'partials/_short_response_time' %>
-Average response time<br>
-<%= erb :'partials/_avg_response_time' %>
-Which HTTP verbs have been used<br>
-<%= erb :'partials/_verbs' %>
-Most popular referrers<br>
-<%= erb :'partials/_referrers' %>
-Most popular user agents<br>
-<%= erb :'partials/_user_agents' %>
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Response Time Data</h4>
+        </div>
+        <%= erb :'partials/_long_response_time' %>
+    </div>
+    <!-- /.panel -->
+</div>
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Most popular user agents</h4>
+        </div>
+        <%= erb :'partials/_user_agents' %>
+    </div>
+    <!-- /.panel -->
+</div>
+<div class="col-lg-4">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>HTTP Verbs Used</h4>
+        </div>
+        <%= erb :'partials/_verbs' %>
+    </div>
+    <!-- /.panel -->
+</div>
+<div class="col-lg-8">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Most Popular Referrers</h4>
+        </div>
+        <%= erb :'partials/_referrers' %>
+    </div>
+    <!-- /.panel -->
+</div>
